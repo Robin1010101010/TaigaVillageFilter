@@ -1,8 +1,8 @@
 add negative seeds (done)
 increase wait time before creating world (done)
-put on github
-implement performance optimizations
-make seeds not viewable
-find solution for when no seed is written to file
-find solution for starting resets
+put on github (done)
+implement performance optimizations (only video 3 from minute 38 onwards left)
+make seeds not viewable (would be solved by synchronous version)
+find solution for when no seed is written to file (would be solved by synchronous version)
+find solution for starting resets (would be solved by synchronous version)
 not sure if it works when opened to lan or in inventory

@@ -6,7 +6,11 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ExitWorld()
 {
-   send {Esc}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Enter}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Enter}{Esc}
+   send {Esc}{Tab}{Enter}
+   sleep, 100
+   send {Esc}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Enter}
+   sleep, 100
+   send {Esc}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Enter}{Esc}
 }
 
 
@@ -26,6 +30,7 @@ CreateNewWorld()
 {
 
 U:: ; Reset 
+   sleep, 1000
    ExitWorld()
    sleep, 3000
    Run, TaigaVillageFilterSeeds.txt

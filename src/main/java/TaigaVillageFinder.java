@@ -106,7 +106,7 @@ public class TaigaVillageFinder {
                 continue;
             }
 
-            // check if all village chest combined have at least 10 obsidian
+            // check if all village chests combined have at least 10 obsidian
             // and the materials to craft an iron pickaxe and a flint and steel
             List<Pair<BPos, List<ItemStack>>> chests = vg.generateLoot(otg, rand);
             int obsidian = 0;
@@ -120,7 +120,7 @@ public class TaigaVillageFinder {
                     }
                     if (item.getItem().equals(Items.IRON_INGOT)) {
                         iron += item.getCount();
-                    } else if (!ironPickaxeFound && (item.getItem().equals(Items.IRON_PICKAXE) || item.getItem().equals(Items.DIAMOND))) {
+                    } else if (!ironPickaxeFound && (item.getItem().equals(Items.IRON_PICKAXE))) {
                         ironPickaxeFound = true;
                         iron += 3;
                     } else if (!ironPickaxeFound && (item.getItem().equals(Items.DIAMOND))) {

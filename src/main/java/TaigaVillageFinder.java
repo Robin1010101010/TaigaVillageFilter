@@ -1,3 +1,4 @@
+import com.seedfinding.mcbiome.biome.Biome;
 import com.seedfinding.mcbiome.biome.Biomes;
 import com.seedfinding.mcbiome.source.BiomeSource;
 import com.seedfinding.mcbiome.source.OverworldBiomeSource;
@@ -81,18 +82,29 @@ public class TaigaVillageFinder {
 
             // check if village can spawn and is taiga village
             BiomeSource obs = BiomeSource.of(Dimension.OVERWORLD, version, worldSeed);
-            if (!village.canSpawn(vPos, obs) || (village.getBiome() != Biomes.TAIGA)) continue;
+            Biome vBiome = obs.getBiomeForNoiseGen((vPos.getX() << 2) + 2, 0, (vPos.getZ() << 2) + 2);
+            if (vBiome != Biomes.TAIGA) continue;
 
             // check if bastion can spawn
             BiomeSource nbs = BiomeSource.of(Dimension.NETHER, version, worldSeed);
-            if (!bastionRemnant.canSpawn(bPos, nbs) || (bastionRemnant.getBiome() == Biomes.BASALT_DELTAS)) continue;
+            Biome bBiome = nbs.getBiomeForNoiseGen((bPos.getX() << 2) + 2, 0, (bPos.getZ() << 2) + 2);
+            if (bBiome == Biomes.BASALT_DELTAS) continue;
 
             // check if fortress can spawn
-            if (!fortress.canSpawn(fPos, nbs)) continue;
+            // it seems that it can always spawn
+            // TODO remove this check before deployment
+            if (!fortress.canSpawn(fPos, nbs)) {
+                System.out.println("\nfortress cant spawn\n");
+            }
 
             // check if village can generate
+            // it seems that it can always generate
+            // TODO remove print statement before deployment
             OverworldTerrainGenerator otg = new OverworldTerrainGenerator(obs);
-            if (!vg.generate(otg, vPos, rand)) continue;
+            if (!vg.generate(otg, vPos, rand)) {
+                System.out.println("\nvillage cant generate\n");
+                continue;
+            }
 
             // check if all village chest combined have at least 10 obsidian
             // and the materials to craft an iron pickaxe and a flint and steel

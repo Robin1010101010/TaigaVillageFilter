@@ -18,8 +18,6 @@ import com.seedfinding.mcfeature.structure.Village;
 import com.seedfinding.mcterrain.terrain.OverworldTerrainGenerator;
 import profotoce59.properties.VillageGenerator;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.util.List;
 import java.util.Random;
 
@@ -29,10 +27,6 @@ public class TaigaVillageFinder {
         // Find a seed with a taiga village near spawn with at least 10 obsidian and materials for iron pick and flint and steel in chests
 
         System.out.println("Starting finder");
-
-        final String fileName = "TaigaVillageFilterSeeds.txt";
-        FileWriter fw;
-        BufferedWriter bw;
 
         final MCVersion version = MCVersion.v1_16_1;
         ChunkRand rand = new ChunkRand();
@@ -135,20 +129,19 @@ public class TaigaVillageFinder {
             if (obsidian < 10 || iron < 4) continue;
 
             // check if village is at most 8 chunks away from spawnpoint
-            CPos spawnPos = SpawnPoint.getApproximateSpawn((OverworldBiomeSource) obs).toChunkPos();
+            CPos spawnPos = SpawnPoint.getApproximateSpawn((OverworldBiomeSource)obs).toChunkPos();
             if (spawnPos.distanceTo(vPos, DistanceMetric.CHEBYSHEV) > 8) continue;
 
-            try {
-                System.out.println("writing seed to file");
-                fw = new FileWriter(fileName, true);
-                bw = new BufferedWriter(fw);
-                bw.write(Long.toString(worldSeed));
-                bw.newLine();
-                bw.close();
-                fw.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            Util util = new Util();
+
+            // asynchronous version
+            /*final String fileName = "TaigaVillageFilterSeeds.txt";
+            util.writeToFile(Long.toString(worldSeed), fileName);*/
+
+            // synchronous version
+            util.copyToClipboard(Long.toString(worldSeed));
+            util.createEmptyFile("seedFound.txt");
+            System.exit(0);
         }
     }
 }

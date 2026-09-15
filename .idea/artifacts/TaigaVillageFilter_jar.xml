@@ -1,0 +1,36 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TaigaVillageFilter:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TaigaVillageFilter_jar</output-path>
+    <root id="archive" name="TaigaVillageFilter.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="TaigaVillageFilter.main" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.5.31/77e0f2568912e45d26c31fd417a332458508acdf/kotlin-stdlib-jdk7-1.5.31.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/6.0.0/703a536ae0e72bf432c35ce3eed770a38fdcedde/junit-jupiter-params-6.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.profotoce59/VillageGenerator/main-SNAPSHOT/8cbf3b66313ae3615e75191729fa152ae905f578/VillageGenerator-main-SNAPSHOT.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.seedfinding/mc_terrain/1.171.1/f3eed450f7f742019de961058a919d0ca9e343b5/mc_terrain-1.171.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.seedfinding/mc_feature/1.171.10/6f23d1ab86bf2b3d8776540f6dcd756e4d545948/mc_feature-1.171.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.seedfinding/mc_core/1.210.0/4e126fe4b3b55922ae95bcd1d4c0b1b82f8ee50c/mc_core-1.210.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/6.0.0/2114748f1415dbe3c9820b8695a72aaa3c5e6ed/junit-platform-commons-6.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.seedfinding/mc_reversal/1.171.1/4b0902fee729d34ebf57b4e5a98fed87ce44aebf/mc_reversal-1.171.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.3.0/152ea56b3a72f655d4fd677fc0ef2596c3dd5e6e/opentest4j-1.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter/6.0.0/aafc31736e48b20d00287c9739ad6eac8eed2baf/junit-jupiter-6.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/6.0.0/62298bd63312a3209c6a464aa8f6a008f960aecd/junit-jupiter-api-6.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/6.0.0/725664fe4d930bfe48f8c058da2b8f87ee4bb94c/junit-platform-launcher-6.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/6.0.0/ef749198d6e4c780f676271964bdb11e29f5f041/junit-jupiter-engine-6.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.lecousin.compression/deflate/0.1.10/83d5ebe8669fac8a496e052bad2422618310c39e/deflate-0.1.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.5.31/ff5d99aecd328872494e8921b72bf6e3af97af3e/kotlin-stdlib-jdk8-1.5.31.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.lecousin.compression/gzip/0.1.10/f5b7b26a75544bfe4b6eac6236b7b326aeee26e1/gzip-0.1.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.5.31/6628d61d0f5603568e72d2d5915d2c034b4f1c55/kotlin-stdlib-1.5.31.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.lecousin/core/0.20.0/e2f4c2df39c634d8a8a8a43370d195df53f1eaf/core-0.20.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.seedfinding/mc_math/1.171.0/6c7d6e90069bf67652641f47bdb19c009d5f7e0/mc_math-1.171.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.seedfinding/mc_seed/1.171.1/949fbbecb02380892430dee0904099706bb9dc39/mc_seed-1.171.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/6.0.0/aae84943a45a3c181850158d6c022ae7a9d315b4/junit-platform-engine-6.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.5.31/43331609c7de811fed085e0dfd150874b157c32/kotlin-stdlib-common-1.5.31.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.seedfinding/mc_noise/1.171.1/2655e4d01a74dcceefdecbc3ca1bc53d8d93d9/mc_noise-1.171.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.seedfinding/mc_biome/1.171.1/f9f2fae80b1861b9a7669a37a6cece040dab9ccd/mc_biome-1.171.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

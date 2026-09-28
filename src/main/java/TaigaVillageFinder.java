@@ -86,17 +86,15 @@ public class TaigaVillageFinder {
 
             // check if fortress can spawn
             // it seems that it can always spawn
-            // TODO remove this check before deployment
-            if (!fortress.canSpawn(fPos, nbs)) {
+            /*if (!fortress.canSpawn(fPos, nbs)) {
                 System.out.println("\nfortress cant spawn\n");
-            }
+            }*/
 
             // check if village can generate
             // it seems that it can always generate
-            // TODO remove print statement before deployment
             OverworldTerrainGenerator otg = new OverworldTerrainGenerator(obs);
             if (!vg.generate(otg, vPos, rand)) {
-                System.out.println("\nvillage cant generate\n");
+                //System.out.println("\nvillage cant generate\n");
                 continue;
             }
 

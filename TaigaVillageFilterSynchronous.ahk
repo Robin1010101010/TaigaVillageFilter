@@ -27,11 +27,13 @@ U:: ; Reset
    sleep, 1000
    ExitWorld()
    sleep, 3000
+   FileDelete, seedFound.txt
    Run, TaigaVillageFilter.jar
    while !FileExist("seedFound.txt") {
       sleep, 1000
    }
    FileDelete, seedFound.txt
+   WinActivate, Minecraft
    CreateNewWorld()
 return
 

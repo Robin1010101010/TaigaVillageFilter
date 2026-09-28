@@ -6,3 +6,5 @@ not sure if it works when opened to lan or in inventory (done)
 make seeds not viewable (done via synchronous version)
 find solution for when no seed is written to file (done via synchronous version)
 find solution for starting resets (done via synchronous version)
+add assets to github page (done)
+select number of threads automatically

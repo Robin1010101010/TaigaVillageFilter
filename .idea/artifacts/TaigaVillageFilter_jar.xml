@@ -1,11 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="org.example.TaigaVillageFilter.main:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/org_example_TaigaVillageFilter_main_jar</output-path>
-    <root id="archive" name="org.example.TaigaVillageFilter.main.jar">
+  <artifact type="jar" name="TaigaVillageFilter:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TaigaVillageFilter_jar</output-path>
+    <root id="archive" name="TaigaVillageFilter.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
       </element>
-      <element id="module-output" name="org.example.TaigaVillageFilter.main" />
+      <element id="module-output" name="TaigaVillageFilter" />
       <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.seedfinding/mc_noise/1.171.1/2655e4d01a74dcceefdecbc3ca1bc53d8d93d9/mc_noise-1.171.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.seedfinding/mc_math/1.171.0/6c7d6e90069bf67652641f47bdb19c009d5f7e0/mc_math-1.171.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.profotoce59/VillageGenerator/main-SNAPSHOT/8cbf3b66313ae3615e75191729fa152ae905f578/VillageGenerator-main-SNAPSHOT.jar" path-in-jar="/" />

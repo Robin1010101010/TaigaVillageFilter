@@ -5,7 +5,6 @@ build/
 !**/src/test/**/build/
 .kotlin
 ideas.txt
-/out/artifacts/
 TaigaVillageFilterAsynchronous.ahk
 TaigaVillageFilterSeeds.txt
 seedFound.txt

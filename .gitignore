@@ -4,7 +4,11 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 .kotlin
-.ideas.txt
+ideas.txt
+/out/artifacts/
+TaigaVillageFilterAsynchronous.ahk
+TaigaVillageFilterSeeds.txt
+seedFound.txt
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

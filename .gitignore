@@ -4,10 +4,12 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 .kotlin
+
 ideas.txt
 TaigaVillageFilterAsynchronous.ahk
 TaigaVillageFilterSeeds.txt
 seedFound.txt
+logs/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

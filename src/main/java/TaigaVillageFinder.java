@@ -18,15 +18,18 @@ import com.seedfinding.mcfeature.structure.Village;
 import com.seedfinding.mcterrain.terrain.OverworldTerrainGenerator;
 import profotoce59.properties.VillageGenerator;
 
+import org.apache.logging.log4j.Logger;
+
 import java.util.List;
 import java.util.Random;
 
 
 public class TaigaVillageFinder {
-    public void findSeeds() {
+    public void findSeeds(Logger LOGGER) {
         // Find a seed with a taiga village near spawn with at least 10 obsidian and materials for iron pick and flint and steel in chests
 
         System.out.println("Starting finder");
+        LOGGER.info("Starting finder");
 
         final MCVersion version = MCVersion.v1_16_1;
         ChunkRand rand = new ChunkRand();
@@ -34,112 +37,121 @@ public class TaigaVillageFinder {
         VillageGenerator vg = new VillageGenerator(version);
         BastionRemnant bastionRemnant = new BastionRemnant(version);
         Fortress fortress = new Fortress(version);
-        long worldSeed;
+        long worldSeed = 0;
         Random seedRand = new Random();
 
+
         while (true) {
-            worldSeed = seedRand.nextLong();
+            try {
+                worldSeed = seedRand.nextLong();
 
-            // check if village is at most 16 chunks away from (0, 0)
-            CPos vPos = village.getInRegion(worldSeed, 0, 0, rand);
-            if (vPos.distanceTo(CPos.ZERO, DistanceMetric.CHEBYSHEV) > 16) continue;
+                // check if village is at most 16 chunks away from (0, 0)
+                CPos vPos = village.getInRegion(worldSeed, 0, 0, rand);
+                if (vPos.distanceTo(CPos.ZERO, DistanceMetric.CHEBYSHEV) > 16) continue;
 
-            // check if bastion is at most 16 chunks away from (0, 0)
-            CPos bPos = null;
-            boolean bastionFound = false;
-            for (int xChunk = -1; xChunk < 1; xChunk++) {
-                for (int zChuck = -1; zChuck < 1; zChuck++) {
-                    bPos = bastionRemnant.getInRegion(worldSeed, xChunk, zChuck, rand);
-                    if (bPos != null && bPos.distanceTo(CPos.ZERO, DistanceMetric.CHEBYSHEV) <= 16) {
-                        bastionFound = true;
-                        break;
+                // check if bastion is at most 16 chunks away from (0, 0)
+                CPos bPos = null;
+                boolean bastionFound = false;
+                for (int xChunk = -1; xChunk < 1; xChunk++) {
+                    for (int zChuck = -1; zChuck < 1; zChuck++) {
+                        bPos = bastionRemnant.getInRegion(worldSeed, xChunk, zChuck, rand);
+                        if (bPos != null && bPos.distanceTo(CPos.ZERO, DistanceMetric.CHEBYSHEV) <= 16) {
+                            bastionFound = true;
+                            break;
+                        }
                     }
+                    if (bastionFound) break;
                 }
-                if (bastionFound) break;
-            }
-            if (!bastionFound) continue;
+                if (!bastionFound) continue;
 
-            // check if fortress is at most 16 chunks away from bastion
-            CPos fPos = null;
-            boolean fortressFound = false;
-            for (int xChunk = -1; xChunk < 1; xChunk++) {
-                for (int zChuck = -1; zChuck < 1; zChuck++) {
-                    fPos = fortress.getInRegion(worldSeed, xChunk, zChuck, rand);
-                    if (fPos != null && fPos.distanceTo(bPos, DistanceMetric.CHEBYSHEV) <= 16) {
-                        fortressFound = true;
-                        break;
+                // check if fortress is at most 16 chunks away from bastion
+                CPos fPos = null;
+                boolean fortressFound = false;
+                for (int xChunk = -1; xChunk < 1; xChunk++) {
+                    for (int zChuck = -1; zChuck < 1; zChuck++) {
+                        fPos = fortress.getInRegion(worldSeed, xChunk, zChuck, rand);
+                        if (fPos != null && fPos.distanceTo(bPos, DistanceMetric.CHEBYSHEV) <= 16) {
+                            fortressFound = true;
+                            break;
+                        }
                     }
+                    if (fortressFound) break;
                 }
-                if (fortressFound) break;
-            }
-            if (!fortressFound) continue;
+                if (!fortressFound) continue;
 
-            // check if village can spawn and is taiga village
-            BiomeSource obs = BiomeSource.of(Dimension.OVERWORLD, version, worldSeed);
-            Biome vBiome = obs.getBiomeForNoiseGen((vPos.getX() << 2) + 2, 0, (vPos.getZ() << 2) + 2);
-            if (vBiome != Biomes.TAIGA) continue;
+                // check if village can spawn and is taiga village
+                BiomeSource obs = BiomeSource.of(Dimension.OVERWORLD, version, worldSeed);
+                Biome vBiome = obs.getBiomeForNoiseGen((vPos.getX() << 2) + 2, 0, (vPos.getZ() << 2) + 2);
+                if (vBiome != Biomes.TAIGA) continue;
 
-            // check if bastion can spawn
-            BiomeSource nbs = BiomeSource.of(Dimension.NETHER, version, worldSeed);
-            Biome bBiome = nbs.getBiomeForNoiseGen((bPos.getX() << 2) + 2, 0, (bPos.getZ() << 2) + 2);
-            if (bBiome == Biomes.BASALT_DELTAS) continue;
+                // check if bastion can spawn
+                BiomeSource nbs = BiomeSource.of(Dimension.NETHER, version, worldSeed);
+                Biome bBiome = nbs.getBiomeForNoiseGen((bPos.getX() << 2) + 2, 0, (bPos.getZ() << 2) + 2);
+                if (bBiome == Biomes.BASALT_DELTAS) continue;
 
-            // check if fortress can spawn
-            // it seems that it can always spawn
-            /*if (!fortress.canSpawn(fPos, nbs)) {
-                System.out.println("\nfortress cant spawn\n");
-            }*/
+                // check if fortress can spawn
+                // it seems that it can always spawn
+                /*if (!fortress.canSpawn(fPos, nbs)) {
+                    System.out.println("\nfortress cant spawn\n");
+                }*/
 
-            // check if village can generate
-            // it seems that it can always generate
-            OverworldTerrainGenerator otg = new OverworldTerrainGenerator(obs);
-            if (!vg.generate(otg, vPos, rand)) {
-                //System.out.println("\nvillage cant generate\n");
-                continue;
-            }
+                // check if village can generate
+                // it seems that it can always generate
+                OverworldTerrainGenerator otg = new OverworldTerrainGenerator(obs);
+                if (!vg.generate(otg, vPos, rand)) {
+                    //System.out.println("\nvillage cant generate\n");
+                    continue;
+                }
 
-            // check if all village chests combined have at least 10 obsidian
-            // and the materials to craft an iron pickaxe and a flint and steel
-            List<Pair<BPos, List<ItemStack>>> chests = vg.generateLoot(otg, rand);
-            int obsidian = 0;
-            int iron = 0;
-            int diamonds = 0;
-            boolean ironPickaxeFound = false;
-            for (Pair<BPos, List<ItemStack>> chest : chests) {
-                for (ItemStack item : chest.getSecond()) {
-                    if (item.getItem().equals(Items.OBSIDIAN)) {
-                        obsidian += item.getCount();
-                    }
-                    if (item.getItem().equals(Items.IRON_INGOT)) {
-                        iron += item.getCount();
-                    } else if (!ironPickaxeFound && (item.getItem().equals(Items.IRON_PICKAXE))) {
-                        ironPickaxeFound = true;
-                        iron += 3;
-                    } else if (!ironPickaxeFound && (item.getItem().equals(Items.DIAMOND))) {
-                        diamonds += item.getCount();
-                        if (diamonds >= 3) {
+                // check if all village chests combined have at least 10 obsidian
+                // and the materials to craft an iron pickaxe and a flint and steel
+                List<Pair<BPos, List<ItemStack>>> chests = vg.generateLoot(otg, rand);
+                int obsidian = 0;
+                int iron = 0;
+                int diamonds = 0;
+                boolean ironPickaxeFound = false;
+                for (Pair<BPos, List<ItemStack>> chest : chests) {
+                    for (ItemStack item : chest.getSecond()) {
+                        if (item.getItem().equals(Items.OBSIDIAN)) {
+                            obsidian += item.getCount();
+                        }
+                        if (item.getItem().equals(Items.IRON_INGOT)) {
+                            iron += item.getCount();
+                        } else if (!ironPickaxeFound && (item.getItem().equals(Items.IRON_PICKAXE))) {
                             ironPickaxeFound = true;
                             iron += 3;
+                        } else if (!ironPickaxeFound && (item.getItem().equals(Items.DIAMOND))) {
+                            diamonds += item.getCount();
+                            if (diamonds >= 3) {
+                                ironPickaxeFound = true;
+                                iron += 3;
+                            }
                         }
                     }
                 }
+                if (obsidian < 10 || iron < 4) continue;
+
+                // check if village is at most 8 chunks away from spawnpoint
+                CPos spawnPos = SpawnPoint.getApproximateSpawn((OverworldBiomeSource) obs).toChunkPos();
+                if (spawnPos.distanceTo(vPos, DistanceMetric.CHEBYSHEV) > 8) continue;
+
+                Util util = new Util();
+
+                // asynchronous version
+                /*final String fileName = "TaigaVillageFilterSeeds.txt";
+                util.writeToFile(Long.toString(worldSeed), fileName);*/
+
+                // synchronous version
+                util.copyToClipboard(Long.toString(worldSeed));
+                util.createEmptyFile("seedFound.txt");
+
+                LOGGER.info("Copied seed to clipboard");
+
+                System.exit(0);
+
+            } catch (Exception e) {
+                LOGGER.error(e + " ### seed: " + worldSeed);
             }
-            if (obsidian < 10 || iron < 4) continue;
-
-            // check if village is at most 8 chunks away from spawnpoint
-            CPos spawnPos = SpawnPoint.getApproximateSpawn((OverworldBiomeSource)obs).toChunkPos();
-            if (spawnPos.distanceTo(vPos, DistanceMetric.CHEBYSHEV) > 8) continue;
-
-            Util util = new Util();
-
-            // asynchronous version
-            /*final String fileName = "TaigaVillageFilterSeeds.txt";
-            util.writeToFile(Long.toString(worldSeed), fileName);*/
-
-            // synchronous version
-            util.copyToClipboard(Long.toString(worldSeed));
-            util.createEmptyFile("seedFound.txt");
-            System.exit(0);
         }
     }
 }

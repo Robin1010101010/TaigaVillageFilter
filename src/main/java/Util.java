@@ -21,7 +21,9 @@ public class Util {
         BufferedWriter bw;
 
         try {
-            System.out.println("writing seed to file");
+            if (!text.isEmpty()) {
+                System.out.println("writing seed to file");
+            }
             fw = new FileWriter(fileName, true);
             bw = new BufferedWriter(fw);
             bw.write(text);
